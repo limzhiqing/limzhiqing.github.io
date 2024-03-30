@@ -1,7 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+    <!-- Define character set and viewport for responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Set the title of the webpage -->
+    <title>Quiz Generator</title>
+    <!-- Include Bootstrap CSS for styling -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <!-- Container for the main content -->
+    <div class="container mt-5">
+        <!-- Heading for the quiz generator -->
+        <h1 class="text-center">Quiz Generator</h1>
+        <!-- Form to input quiz parameters -->
+        <form id="generatorForm">
+            <!-- Input field for selecting quiz topics -->
+            <div class="form-group">
+                <label for="topic">Quiz Topics</label>
+                <input type="text" class="form-control" id="topic" name="topic" required />
+                <!-- Error message for missing topic input -->
+                <small class="text-danger d-none" id="topicError">Please fill in this field.</small>
+            </div>
+
+            <!-- Input field for specifying the number of questions -->
+            <div class="form-group">
+                <label for="num_qns">Number of Questions</label>
+                <input type="number" class="form-control" id="num_qns" name="num_qns" min="0" max="10" required />
+                <!-- Error message for missing number of questions input -->
+                <small class="text-danger d-none" id="numQnsError">Please fill in this field. (1-10 Questions)</small>
+            </div>
+
+            <!-- Dropdown for selecting quiz difficulty -->
+            <div class="form-group">
+                <label for="difficulty">Quiz Difficulty</label>
+                <select class="form-control" id="difficulty" name="difficulty" required>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <!-- Error message for missing quiz difficulty selection -->
+                <small class="text-danger d-none" id="difficultyError">Please fill in this field.</small>
+            </div>
+
+            <!-- Dropdown for selecting language -->
+            <div class="form-group">
+                <label for="language">Language</label>
+                <select class="form-control" id="language" name="language" required>
+                    <option value="English">English</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="Malay">Malay</option>
+                    <option value="Tamil">Tamil</option>
+                </select>
+                <!-- Error message for missing language selection -->
+                <small class="text-danger d-none" id="languageError">Please fill in this field.</small>
+            </div>
+
+            <!-- Button to trigger quiz generation -->
+            <button type="button" class="btn btn-primary" onclick="validateAndFetch()">
+                Generate Quiz
+            </button>
+        </form>
+
+        <!-- Heading for the quiz generator -->
+        <h1 class="text-center">Quiz</h1>
+        <!-- Form to input quiz answers -->
+        <form id="quizForm">
+            <!-- Container for quiz questions -->
+            <div id="quizContainer"></div>
+        
+            <!-- Button to trigger quiz submission -->
+            <button type="button" class="btn btn-primary d-none" id="submitButton" onclick="showResults()">
+                Submit Quiz
+            </button>
+
+            <!-- Container for quiz results -->
+            <div id="resultsContainer"></div>
+        </form>
+    </div>
+
+    <!-- Include custom JavaScript -->
+    <script src="script.js"></script>
 </body>
+
 </html>
